@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import './assets/sass/main.scss';
 
 function App() {
   const [day, setDay] = useState("");
@@ -53,11 +54,11 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <div id="containerMain" className="container">
         <form className="form" onSubmit={calculateAge}>
           <div className="d-flex  align-items-center">
           <div className="d-flex flex-column col-lg-4 mx-2">
-            <label htmlFor="day" className="text-start">DAY</label>
+            <label htmlFor="day" className="text-start poppins-bold ">DAY</label>
             <input
               type="text"
               className="form-control"
@@ -69,7 +70,7 @@ function App() {
             {errors.day && <div className="invalid-feedback">{errors.day}</div>}
           </div>
           <div className="d-flex flex-column col-lg-4 mx-2">
-            <label htmlFor="month" className="text-start">MONTH</label>
+            <label htmlFor="month" className="text-start poppins-bold ">MONTH</label>
             <input
               type="text"
               className="form-control"
@@ -81,7 +82,7 @@ function App() {
             {errors.month && <div className="invalid-feedback">{errors.month}</div>}
           </div>
           <div className="d-flex flex-column col-lg-4 mx-2">
-            <label htmlFor="year" className="text-start">YEAR</label>
+            <label htmlFor="year" className="text-start poppins-bold">YEAR</label>
             <input
               type="text"
               className="form-control"
@@ -103,7 +104,9 @@ function App() {
         {age && (
           <div className="mt-3">
             <h3>Age:</h3>
-            <p>{age.years} Years, {age.months} Months, and {age.days} Days</p>
+            <p>{age.years} Years</p>
+            <p> {age.months} Months</p>
+            <p> {age.days} Days</p>
           </div>
         )}
       </div>

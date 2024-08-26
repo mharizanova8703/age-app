@@ -1,0 +1,21 @@
+
+
+@import 'font-size';
+@import 'font';
+@import 'colors';
+
+body{
+    background-color: $grey-bg;
+}
+#containerMain{
+    background-color: $white;
+    padding: 2rem;
+    border-radius: 1rem 1rem 5rem 1rem;
+    .form{
+        label{
+            font-family: $font-family-poppins;
+            font-weight: 700;
+            color: $text-color;
+        }
+    }
+}
