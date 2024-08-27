@@ -1,21 +1,80 @@
+@import "font-size";
+@import "font";
+@import "colors";
 
-
-@import 'font-size';
-@import 'font';
-@import 'colors';
-
-body{
-    background-color: $grey-bg;
+body {
+  background-color: $grey-bg;
 }
-#containerMain{
-    background-color: $white;
-    padding: 2rem;
-    border-radius: 1rem 1rem 5rem 1rem;
-    .form{
-        label{
-            font-family: $font-family-poppins;
-            font-weight: 700;
-            color: $text-color;
-        }
+
+#containerMain {
+  max-width: 75%;
+  background-color: $white;
+  padding: 2rem;
+  border-radius: 1rem 1rem 5rem 1rem;
+
+  .form {
+    label {
+      font-family: $font-family-poppins;
+      font-weight: 700;
+      color: $text-color;
     }
+
+    input {
+      background-color: $white;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      color: $grey-bg;
+
+      &::placeholder {
+        color: darkgray;
+      }
+
+      &:focus {
+        background-color: $white;
+        color: darkgray;
+        border-color: $white;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+
+    .btn-active,
+    .btn-unactive {
+      background-color: transparent;
+
+      &:hover {
+        border: transparent;
+      }
+    }
+  }
+
+  .age-container {
+    text-align: start;
+
+    p {
+      font-family: "Poppins", sans-serif;
+      font-weight: 800;
+      font-style: italic;
+      line-height: 62px;
+      color: $black;
+    }
+
+    span,
+    .number-age {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      color: $purple;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #containerMain {
+    max-width: 100%;
+    .age-container{
+      p{
+        line-height: 45px;
+      }
+    }
+  }
 }

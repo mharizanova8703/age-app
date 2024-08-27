@@ -6,8 +6,9 @@ function App() {
   const [day, setDay] = useState("");
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
-  const [age, setAge] = useState(null);
+  const [age, setAge] = useState({ years: "--", months: "--", days: "--" });
   const [errors, setErrors] = useState({});
+  const [isActive, setIsActive] = useState(false); // New state to track active button
 
   const validateForm = () => {
     const errors = {};
@@ -29,8 +30,7 @@ function App() {
     return Object.keys(errors).length === 0;
   };
 
-  const calculateAge = (e) => {
-    e.preventDefault();
+  const calculateAge = () => {
     if (validateForm()) {
       const today = new Date();
       const birthDate = new Date(`${year}-${month}-${day}`);
@@ -52,63 +52,72 @@ function App() {
     }
   };
 
+  const handleButtonClick = () => {
+    setIsActive(true); // Set active button state to true when clicked
+    calculateAge(); // Calculate the age immediately
+  };
+
   return (
     <>
       <div id="containerMain" className="container">
-        <form className="form" onSubmit={calculateAge}>
-          <div className="d-flex  align-items-center">
-          <div className="d-flex flex-column col-lg-4 mx-2">
-            <label htmlFor="day" className="text-start poppins-bold ">DAY</label>
-            <input
-              type="text"
-              className="form-control"
-              id="day"
-              value={day}
-              onChange={(e) => setDay(e.target.value)}
-              className={errors.day ? "form-control is-invalid" : "form-control"}
-            />
-            {errors.day && <div className="invalid-feedback">{errors.day}</div>}
-          </div>
-          <div className="d-flex flex-column col-lg-4 mx-2">
-            <label htmlFor="month" className="text-start poppins-bold ">MONTH</label>
-            <input
-              type="text"
-              className="form-control"
-              id="month"
-              value={month}
-              onChange={(e) => setMonth(e.target.value)}
-              className={errors.month ? "form-control is-invalid" : "form-control"}
-            />
-            {errors.month && <div className="invalid-feedback">{errors.month}</div>}
-          </div>
-          <div className="d-flex flex-column col-lg-4 mx-2">
-            <label htmlFor="year" className="text-start poppins-bold">YEAR</label>
-            <input
-              type="text"
-              className="form-control"
-              id="year"
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-              className={errors.year ? "form-control is-invalid" : "form-control"}
-            />
-            {errors.year && <div className="invalid-feedback">{errors.year}</div>}
-          </div>
-          {errors.date && <div className="text-danger">{errors.date}</div>}
-         
+        <form className="form" onSubmit={(e) => e.preventDefault()}>
+          <div className="d-flex align-items-center">
+            <div className="d-flex flex-column col-lg-3 mx-2">
+              <label htmlFor="day" className="text-start poppins-bold">DAY</label>
+              <input
+                type="text"
+                className={errors.day ? "form-control is-invalid" : "form-control"}
+                id="day"
+                placeholder="DD"
+                value={day}
+                onChange={(e) => setDay(e.target.value)}
+              />
+              {errors.day && <div className="invalid-feedback">{errors.day}</div>}
+            </div>
+            <div className="d-flex flex-column col-lg-3 mx-2">
+              <label htmlFor="month" className="text-start poppins-bold">MONTH</label>
+              <input
+                type="text"
+                className={errors.month ? "form-control is-invalid" : "form-control"}
+                id="month"
+                placeholder="MM"
+                value={month}
+                onChange={(e) => setMonth(e.target.value)}
+              />
+              {errors.month && <div className="invalid-feedback">{errors.month}</div>}
+            </div>
+            <div className="d-flex flex-column col-lg-3 mx-2">
+              <label htmlFor="year" className="text-start poppins-bold">YEAR</label>
+              <input
+                type="text"
+                className={errors.year ? "form-control is-invalid" : "form-control"}
+                id="year"
+                placeholder="YYYY"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+              />
+              {errors.year && <div className="invalid-feedback">{errors.year}</div>}
+            </div>
+            {errors.date && <div className="text-danger">{errors.date}</div>}
           </div>
           <div className="mt-3">
-            <button type="submit" className="btn"><img className="w-100" src="./src/assets/button-un-active.png" alt="active-btn"/></button>
-     
+            {!isActive && (
+              <button type="button" className="btn-unactive" onClick={handleButtonClick}>
+                <img className="w-100" src="./src/assets/button-un-active.png" alt="un-active-btn" />
+              </button>
+            )}
+            {isActive && (
+              <button type="submit" className="btn-active">
+                <img className="w-100" src="./src/assets/active-button.png" alt="active-btn" />
+              </button>
+            )}
           </div>
         </form>
-        {age && (
-          <div className="mt-3">
-            <h3>Age:</h3>
-            <p>{age.years} Years</p>
-            <p> {age.months} Months</p>
-            <p> {age.days} Days</p>
-          </div>
-        )}
+        <div className="age-container font-xl">
+          <p><span className="number-age">{age.years}</span> years</p>
+          <p><span className="number-age">{age.months}</span> months</p>
+          <p><span className="number-age">{age.days}</span> days</p>
+        </div>
       </div>
     </>
   );
