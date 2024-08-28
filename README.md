@@ -1,5 +1,16 @@
-# Tools
-https://img.shields.io/badge/sass-pink https://img.shields.io/badge/javascript-yellow
+#Live https://mharizanova8703.github.io/age-app/
+
+# Tools:
+ ![Github license](https://img.shields.io/badge/sass-pink)  ![Github license](https://img.shields.io/badge/javascript-yellow) ![Github license](https://img.shields.io/badge/nix-purple)</br>
+
+ 
+ Resourses:
+ https://react.dev/
+ 
+
+
+
+
 
 #Screenshot
 
@@ -7,7 +18,6 @@ https://img.shields.io/badge/sass-pink https://img.shields.io/badge/javascript-y
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-#Live https://mharizanova8703.github.io/age-app/
 
 # Frontend Mentor - Age calculator app
 
