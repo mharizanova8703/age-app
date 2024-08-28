@@ -6,11 +6,9 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-
+#Live https://mharizanova8703.github.io/age-app/
 
 # Frontend Mentor - Age calculator app
-
-![Design preview for the Age calculator app coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
 
